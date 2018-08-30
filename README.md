@@ -4,7 +4,7 @@ A system for fast and robust anonymised parallel requests with information shari
 Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 Provides additional features such as commandline printout of the proxy pool and the success rate over time.
 
-![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/Diagram.jpg)
+![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/images/Diagram.jpg)
 
 ## Use Cases
 Unreliable proxies
@@ -13,15 +13,22 @@ Circumvent blacklisting/throttling of ip addresses, including paid and unpaid pr
 ### Prerequisites
 
 (Optional) Install [hipsterplot](https://github.com/imh/hipsterplot)
+
 Python3
 
+### How to use
+The user must implement:
+The data classes for for the superclass Data, which must implement the following methods:
 ```
-Give examples
+__init__, __str__, next
 ```
+As __str__ will serve as a unique identifier, 
 
-### Examples
+The batch_handler instance which initiates and runs the MultiBatchHandler session, and pipes around data. 
+The call function to a particular webservice, which returns signals (success, score, completed, switch) to the batch handler for scoring proxies and rotating data and proxies. 
+The right settings for the various handlers, such as optimal number of proxies in pool, number of batch_handler processes, amount of staggering to initial batches to avoid network spike detection, timeout parameters for the http request tests and the deployment environment calls, thresholds for proxy blacklisting and proxy and data switching. 
 
-In our first example, we will be 
+
 
 ```
 Give the example
