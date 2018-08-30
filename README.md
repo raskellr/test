@@ -3,8 +3,7 @@
 A system for fast and robust anonymised parallel requests with information sharing over a pool of unreliable proxies to a potentially unfriendly peer.
 Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 
-![Program Architecture Diagram]
-(https://github.com/raskellr/test/blob/master/Diagram.jpg)
+![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/Diagram.jpg)
 
 ## Getting Started
 
