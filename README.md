@@ -1,14 +1,15 @@
 # MultiRequests
 
-A system for fast and robust anonymised parallel requests with cross-process scoring and blacklisting over a shared pool of unreliable proxies to a potentially unfriendly peer.
+A system for fast and robust anonymised parallel requests over a shared pool of unreliable proxies to a potentially unfriendly peer, by carrying out cross-proccess with scoring and blacklisting.
 Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 
 ![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
 
 ## Problem Specification
 
-Problem specification:
-Main challenge is to have as many requests running concurrently as possible. In a test case, this optimum number was about 40-50, after which performance started to decline due to detection. Our system was able to make about 15,000 requests over 40 minutes, with a 10 second latency timeout, to a single website with captcha and behavioural-detection capabilities. On average, 80% of those requests were successful (5 successful requests/second).
+One of our objectives was to have as many requests running concurrently as possible. 
+
+In a test case, this optimum number was about 40-50, after which performance started to decline due to detection. Our system was able to make about 15,000 requests over 40 minutes, with a 10 second latency timeout, to a single website with captcha and behavioural-detection capabilities. On average, 80% of those requests were successful (5 successful requests/second).
  
 Computation is a much smaller time-factor compared to request latency, especially through mediating proxy. (IO bound) Hence little or no attention is paid to computationally performant implementation. 
 
@@ -21,7 +22,7 @@ Circumvent blacklisting/throttling of ip addresses, including paid and unpaid pr
 
 Python3
 
-### How to use
+### How to Use
 The user must implement:
 * The data classes for for the superclass Data, which must implement the following methods:
 
@@ -32,7 +33,7 @@ As `__str__` will serve as a unique identifier (Note to self: better not to use
 * The call function to a particular webservice, which returns signals (success, score, completed, switch) to the batch handler for scoring proxies and rotating data and proxies. 
 * The right settings for the various handlers, such as optimal number of proxies in pool, number of batch_handler processes, amount of staggering to initial batches to avoid network spike detection, timeout parameters for the http request tests and the deployment environment calls, thresholds for proxy blacklisting and proxy and data switching. 
 
-### How to Configure the Settings.py file
+### How to Configure the settings.py File
 
 ```
 Give the example
@@ -65,6 +66,8 @@ Explain what these tests test and why
 ```
 Give an example
 ```
+### Design Questions
+It is unclear that multiprocessing was a better solution compared to other alternatives for parallel and asynchronous programming, such as the native python libraries threading and async io.
 
 ## Deployment
 
