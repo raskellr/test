@@ -1,13 +1,18 @@
 # MultiRequests
 
-A system for fast and robust anonymised parallel requests with information sharing over a pool of unreliable proxies to a potentially unfriendly peer.
+A system for fast and robust anonymised parallel requests with cross-process scoring and blacklisting over a shared pool of unreliable proxies to a potentially unfriendly peer.
 Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
-Provides additional features such as commandline printout of the proxy pool and the success rate over time.
 
 ![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/images/Diagram.jpg)
 
-## Use Cases
-Unreliable proxies
+## Problem Specification
+
+Problem specification:
+Main challenge is to have as many requests running concurrently as possible. In a test case, this optimum number was about 40-50, after which performance started to decline due to detection. Our system was able to make about 15,000 requests over 40 minutes, with a 10 second latency timeout, to a single website with captcha and behavioural-detection capabilities. On average, 80% of those requests were successful (5 successful requests/second).
+ 
+Computation is a much smaller time-factor compared to request latency, especially through mediating proxy. (IO bound) Hence little or no attention is paid to computationally performant implementation. 
+
+In order to deal with proxies which 
 Circumvent blacklisting/throttling of ip addresses, including paid and unpaid proxies
 
 ### Prerequisites
@@ -18,17 +23,16 @@ Python3
 
 ### How to use
 The user must implement:
-The data classes for for the superclass Data, which must implement the following methods:
-```
-__init__, __str__, next
-```
-As __str__ will serve as a unique identifier, 
+* The data classes for for the superclass Data, which must implement the following methods:
 
-The batch_handler instance which initiates and runs the MultiBatchHandler session, and pipes around data. 
-The call function to a particular webservice, which returns signals (success, score, completed, switch) to the batch handler for scoring proxies and rotating data and proxies. 
-The right settings for the various handlers, such as optimal number of proxies in pool, number of batch_handler processes, amount of staggering to initial batches to avoid network spike detection, timeout parameters for the http request tests and the deployment environment calls, thresholds for proxy blacklisting and proxy and data switching. 
+`__init__`, `__str__`, `next`
+As `__str__` will serve as a unique identifier (Note to self: better not to use 
 
+* The batch_handler instance which initiates and runs the MultiBatchHandler session, and pipes around data. 
+* The call function to a particular webservice, which returns signals (success, score, completed, switch) to the batch handler for scoring proxies and rotating data and proxies. 
+* The right settings for the various handlers, such as optimal number of proxies in pool, number of batch_handler processes, amount of staggering to initial batches to avoid network spike detection, timeout parameters for the http request tests and the deployment environment calls, thresholds for proxy blacklisting and proxy and data switching. 
 
+### How to Configure the Settings.py file
 
 ```
 Give the example
