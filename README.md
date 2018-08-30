@@ -2,16 +2,17 @@
 
 A system for fast and robust anonymised parallel requests with information sharing over a pool of unreliable proxies to a potentially unfriendly peer.
 Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
+Provides additional features such as commandline printout of the proxy pool and the success rate over time.
 
 ![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/Diagram.jpg)
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Use Cases
+Unreliable proxies
+Circumvent blacklisting/throttling of ip addresses, including paid and unpaid proxies
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+[hipsterplot](https://github.com/imh/hipsterplot)
 
 ```
 Give examples
