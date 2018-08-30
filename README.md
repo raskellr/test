@@ -12,7 +12,8 @@ Circumvent blacklisting/throttling of ip addresses, including paid and unpaid pr
 
 ### Prerequisites
 
-[hipsterplot](https://github.com/imh/hipsterplot)
+(Optional) Install [hipsterplot](https://github.com/imh/hipsterplot)
+Python3
 
 ```
 Give examples
