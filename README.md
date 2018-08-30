@@ -1,6 +1,6 @@
 # MultiRequests
 
-A system for fast and robust anonymised parallel requests over a shared pool of unreliable proxies to a potentially unfriendly peer. Achieves performance by carrying out cross-proccess scoring and blacklisting of proxies, and evades detection by rotating data and proxies, locking proxies while in use to keep traffic-per-proxy low.
+A system for fast and robust anonymised parallel requests over a shared pool of unreliable proxies to a potentially unfriendly peer. Achieves performance by carrying out cross-proccess scoring and blacklisting of proxies, and evades detection by rotating data and proxies, locking proxies while in use.
 Although not suggested use case, potentially a tool for carrying out spamming, scraping, and captcha avoidance without a botnet or paid proxies.
 
 ![Program Architecture Diagram](https://github.com/raskellr/test/blob/master/images/DiagramSharp.png)
